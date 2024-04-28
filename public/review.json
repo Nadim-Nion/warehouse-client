@@ -5,8 +5,8 @@
         "authorName": "Erik Rivenes",
         "category": "Mystery",
         "image": "https://i.ibb.co/qjNMPnV/mystery.jpg",
-        "review": "A gripping mystery novel that keeps you guessing until the very end.",
-        "price": 15.99
+        "comments": "A gripping mystery novel that keeps you guessing until the very end.",
+        "rating": 2
     },
     {
         "id": 2,
@@ -14,8 +14,8 @@
         "authorName": "Barndon Q. Morris",
         "category": "Science Fiction",
         "image": "https://i.ibb.co/Ph1FL0J/sifi.jpg",
-        "review": "An imaginative science fiction tale set on a distant moon of Saturn.",
-        "price": 12.49
+        "comments": "An imaginative science fiction tale set on a distant moon of Saturn.",
+        "rating": 4
     },
     {
         "id": 3,
@@ -23,7 +23,7 @@
         "authorName": "Douglas Adams",
         "category": "Thriller",
         "image": "https://i.ibb.co/6YjdSMz/thriller.jpg",
-        "review": "A suspenseful thriller with unexpected twists and turns.",
-        "price": 18.95
+        "comments": "A suspenseful thriller with unexpected twists and turns.",
+        "rating": 3.5
     }
 ]

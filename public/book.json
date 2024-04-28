@@ -1,0 +1,56 @@
+[
+    {
+        "id": 1,
+        "name": "Different Winter",
+        "image": "https://i.ibb.co/tB7S1Vm/img1.jpg",
+        "description": "A novel by F. Scott Fitzgerald portraying the extravagance and moral decay of the Jazz Age.",
+        "price": 12.99,
+        "quantity": 20,
+        "supplier": "BookEmpire"
+    },
+    {
+        "id": 2,
+        "name": "We are Business",
+        "image": "https://i.ibb.co/QD7tS2j/img2.jpg",
+        "description": "A classic novel by Harper Lee about racial injustice and moral growth in the American South.",
+        "price": 10.50,
+        "quantity": 15,
+        "supplier": "Readmore Books"
+    },
+    {
+        "id": 3,
+        "name": "Snow at Sunset",
+        "image": "https://i.ibb.co/88Msfmp/img3.jpg",
+        "description": "George Orwell's dystopian novel depicting a totalitarian regime and surveillance state.",
+        "price": 9.99,
+        "quantity": 25,
+        "supplier": "Literary Haven"
+    },
+    {
+        "id": 4,
+        "name": "Company of One",
+        "image": "https://i.ibb.co/tsLC1Dm/img4.jpg",
+        "description": "Jane Austen's classic romance novel exploring societal expectations and personal values.",
+        "price": 8.75,
+        "quantity": 18,
+        "supplier": "Book Haven"
+    },
+    {
+        "id": 5,
+        "name": "Narnia",
+        "image": "https://i.ibb.co/M8cjsV6/img5.jpg",
+        "description": "Herman Melville's epic tale of Captain Ahab's obsession with the great white whale.",
+        "price": 11.25,
+        "quantity": 12,
+        "supplier": "Oceanic Books"
+    },
+    {
+        "id": 6,
+        "name": "The Two Towers",
+        "image": "https://i.ibb.co/t8FkFyC/img6.jpg",
+        "description": "J.D. Salinger's novel following disillusioned teenager Holden Caulfield in New York City.",
+        "price": 13.50,
+        "quantity": 22,
+        "supplier": "City Lights Books"
+    }
+]

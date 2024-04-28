@@ -13,7 +13,7 @@ const Genre = () => {
     return (
         <div>
             <h2 className='text-4xl font-bold text-center mt-2'>Featured Genres</h2>
-            <div className='grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-5 mb-6'>
+            <div className='grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-5 mb-6 justify-center items-center'>
                 {
                     genres.map(genre => <GenreCard
                         key={genre.id}

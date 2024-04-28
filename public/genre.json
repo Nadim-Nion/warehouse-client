@@ -1,0 +1,23 @@
+[
+    {
+        "id": 1,
+        "bookName": "Ill Fame",
+        "authorName": "Erik Rivenes",
+        "category": "Mystery",
+        "image": "https://i.ibb.co/qjNMPnV/mystery.jpg"
+    },
+    {
+        "id": 2,
+        "bookName": "Enceladus",
+        "authorName": "Barndon Q. Morris",
+        "category": "Science Fiction",
+        "image": "https://i.ibb.co/Ph1FL0J/sifi.jpg"
+    },
+    {
+        "id": 3,
+        "bookName": "Body in the Wood",
+        "authorName": "Douglas Adams",
+        "category": "Thriller",
+        "image": "https://i.ibb.co/6YjdSMz/thriller.jpg"
+    }
+]

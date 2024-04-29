@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../providers/AuthProvider';
 
 const Register = () => {
+    const { createUser } = useContext(AuthContext);
+    const [success, setSuccess] = useState('');
+    const [error, setError] = useState('');
+
     const handleRegister = event => {
         event.preventDefault();
 
@@ -11,6 +16,23 @@ const Register = () => {
         const password = form.password.value;
         const user = { name, email, password }
         console.log(user);
+
+        // clear the previous error message
+        setError('');
+
+        // clear the previous success message
+        setSuccess('');
+
+        createUser(email, password)
+            .then(result => {
+                const newUser = result.user;
+                console.log(newUser);
+                setSuccess('User created successfully');
+                form.reset();
+            })
+            .catch(error => {
+                console.log(error.message);
+            })
     }
     return (
         <div className="hero min-h-screen bg-base-200">
@@ -42,6 +64,8 @@ const Register = () => {
                                     </Link>
                                 </p>
                             </label>
+                            <p className='text-center text-green-700 font-semibold'>{success}</p>
+                            <p className='text-center text-red-700 font-semibold'>{error}</p>
                         </div>
                         <div className="form-control mt-6">
                             <button className="btn btn-info">Register</button>

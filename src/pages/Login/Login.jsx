@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import SocialLogin from '../../components/SocialLogin/SocialLogin';
 
 const Login = () => {
+    const [success, setSuccess] = useState('');
+    const [error, setError] = useState('');
 
     const handleLogIn = event => {
         event.preventDefault();
@@ -12,6 +14,12 @@ const Login = () => {
         const password = form.password.value;
         const user = { email, password };
         console.log(user);
+
+        // clear the previous error message
+        setError('');
+
+        // clear the previous success message
+        setSuccess('');
     }
 
     return (
@@ -38,6 +46,8 @@ const Login = () => {
                                     </Link>
                                 </p>
                             </label>
+                            <p className='text-center text-green-700 font-semibold'>{success}</p>
+                            <p className='text-center text-red-700 font-semibold'>{error}</p>
                         </div>
                         <div className="form-control mt-6">
                             <button className="btn btn-info">Login</button>

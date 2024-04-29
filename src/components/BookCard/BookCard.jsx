@@ -1,7 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const BookCard = ({ book }) => {
-    const { name, image, description, price, quantity, supplier } = book;
+    const { id, name, image, description, price, quantity, supplier } = book;
 
     return (
         <div className="flex justify-center items-center">
@@ -16,7 +17,9 @@ const BookCard = ({ book }) => {
                     <p>Supplier: {supplier}</p>
                     <p className='text-xl font-bold'>Price: ${price}</p>
                     <div className="card-actions justify-end">
-                        <button className="btn btn-info">Update</button>
+                        <Link to={`/book/${id}`}>
+                            <button className="btn btn-info">Update</button>
+                        </Link>
                     </div>
                 </div>
             </div>

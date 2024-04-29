@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Header = () => {
     const navItems = <>
+        <li><Link to="/">Home</Link></li>
         <li><Link>Manage Items</Link></li>
         <li><Link>Add Items</Link></li>
         <li><Link>My Items</Link></li>
@@ -53,7 +54,7 @@ const Header = () => {
             </div>
             <div className="navbar-end">
                 {/* <a className="btn">Button</a> */}
-                <Link>
+                <Link to="/login">
                     <button className="btn btn-info">Login</button>
                 </Link>
             </div>

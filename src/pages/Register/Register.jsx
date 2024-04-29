@@ -3,9 +3,10 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProvider';
 
 const Register = () => {
-    const { createUser } = useContext(AuthContext);
+    const { createUser, verifyEmail } = useContext(AuthContext);
     const [success, setSuccess] = useState('');
     const [error, setError] = useState('');
+    const [toast, setToast] = useState(false);
 
     const handleRegister = event => {
         event.preventDefault();
@@ -23,11 +24,21 @@ const Register = () => {
         // clear the previous success message
         setSuccess('');
 
+        // clear the previous toast message
+        setToast(false);
+
         createUser(email, password)
             .then(result => {
                 const newUser = result.user;
                 console.log(newUser);
                 setSuccess('User created successfully');
+                verifyEmail(newUser)
+                    .then(() => {
+                        setToast(true);
+                    })
+                    .catch(() => {
+                        console.log(error.message);
+                    })
                 form.reset();
             })
             .catch(error => {
@@ -68,6 +79,16 @@ const Register = () => {
                             <p className='text-center text-green-700 font-semibold'>{success}</p>
                             <p className='text-center text-red-700 font-semibold'>{error}</p>
                         </div>
+                        {
+                            toast && <div className="toast toast-end toast-middle">
+                                <div className="alert alert-info">
+                                    <span>Email verified successfully.</span>
+                                </div>
+                                <div className="alert alert-success">
+                                    <span>Please check your email.</span>
+                                </div>
+                            </div>
+                        }
                         <div className="form-control mt-6">
                             <button className="btn btn-info">Register</button>
                         </div>

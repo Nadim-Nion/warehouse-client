@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import SocialLogin from '../../components/SocialLogin/SocialLogin';
+import { AuthContext } from '../../providers/AuthProvider';
 
 const Login = () => {
+    const { signIn } = useContext(AuthContext);
     const [success, setSuccess] = useState('');
     const [error, setError] = useState('');
 
@@ -20,6 +22,18 @@ const Login = () => {
 
         // clear the previous success message
         setSuccess('');
+
+        signIn(email, password)
+            .then(result => {
+                const loggedInUser = result.user;
+                console.log(loggedInUser);
+                setSuccess('User logged-in successfully');
+                form.reset();
+            })
+            .catch(error => {
+                console.log(error.message);
+                setError(error.message);
+            })
     }
 
     return (
@@ -52,9 +66,9 @@ const Login = () => {
                         <div className="form-control mt-6">
                             <button className="btn btn-info">Login</button>
                         </div>
-                        <span>----------------------OR-------------------------</span>
-                        <SocialLogin></SocialLogin>
                     </form>
+                    <div className="divider divider-info">or</div>
+                    <SocialLogin></SocialLogin>
                 </div>
             </div>
         </div>

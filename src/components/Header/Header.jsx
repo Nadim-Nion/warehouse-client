@@ -1,15 +1,32 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../providers/AuthProvider';
 
 const Header = () => {
+    const { user, logOut } = useContext(AuthContext);
+
     const navItems = <>
         <li><Link to="/">Home</Link></li>
-        <li><Link>Manage Items</Link></li>
-        <li><Link>Add Items</Link></li>
-        <li><Link>My Items</Link></li>
+        {
+            user &&
+            <>
+                <li><Link>Manage Items</Link></li>
+                <li><Link>Add Items</Link></li>
+                <li><Link>My Items</Link></li>
+            </>
+        }
         <li><Link>Blogs</Link></li>
         {/* <li><Link>Login</Link></li> */}
     </>
+
+    const handleLogOut = () => {
+        logOut()
+            .then(() => { })
+            .catch(error => {
+                console.log(error.message);
+            })
+    }
+
     return (
         <div className="navbar bg-base-100">
             <div className="navbar-start">
@@ -54,9 +71,14 @@ const Header = () => {
             </div>
             <div className="navbar-end">
                 {/* <a className="btn">Button</a> */}
-                <Link to="/login">
-                    <button className="btn btn-info">Login</button>
-                </Link>
+                {
+                    user ?
+                        <button onClick={handleLogOut} className="btn btn-info">Log Out</button>
+                        :
+                        <Link to="/login">
+                            <button className="btn btn-info">Login</button>
+                        </Link>
+                }
             </div>
         </div>
     );

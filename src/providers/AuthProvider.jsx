@@ -1,6 +1,6 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useEffect, useState } from 'react';
 import app from '../firebase/firebase.config';
-import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth';
+import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth';
 import { GoogleAuthProvider } from "firebase/auth";
 
 export const AuthContext = createContext(null);
@@ -31,6 +31,18 @@ const AuthProvider = ({ children }) => {
         setLoading(true);
         return signOut(auth);
     }
+
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, currentUser => {
+            console.log('Current user inside the auth state observer', currentUser);
+            setUser(currentUser);
+            setLoading(false);
+        })
+
+        return () => {
+            unsubscribe();
+        }
+    }, []);
 
     const authInfo = {
         auth,

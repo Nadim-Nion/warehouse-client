@@ -9,6 +9,7 @@ const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
 
     const authInfo = {
+        auth,
         user,
     };
 

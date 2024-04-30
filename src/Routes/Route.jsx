@@ -4,6 +4,8 @@ import Home from "../pages/HomePage/Home/Home";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
 import ErrorPage from "../components/ErrorPage/ErrorPage";
+import SingleBook from "../pages/SingleBook/SingleBook";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -25,7 +27,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/book/:id',
-                element: <div>This Book route</div>
+                element: <PrivateRoute><SingleBook></SingleBook></PrivateRoute>
             }
         ]
     },

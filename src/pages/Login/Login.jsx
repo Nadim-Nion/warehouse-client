@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import SocialLogin from '../../components/SocialLogin/SocialLogin';
 import { AuthContext } from '../../providers/AuthProvider';
 
@@ -7,6 +7,12 @@ const Login = () => {
     const { signIn } = useContext(AuthContext);
     const [success, setSuccess] = useState('');
     const [error, setError] = useState('');
+
+    const location = useLocation();
+    // console.log(location);
+    const navigate = useNavigate();
+
+    const from = location.state.from.pathname || '/';
 
     const handleLogIn = event => {
         event.preventDefault();
@@ -28,6 +34,7 @@ const Login = () => {
                 const loggedInUser = result.user;
                 console.log(loggedInUser);
                 setSuccess('User logged-in successfully');
+                navigate(from, { replace: true });
                 form.reset();
             })
             .catch(error => {

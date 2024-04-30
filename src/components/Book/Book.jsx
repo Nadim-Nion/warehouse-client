@@ -5,7 +5,7 @@ const Book = () => {
     const [books, setBooks] = useState([]);
 
     useEffect(() => {
-        fetch('book.json')
+        fetch('http://localhost:5000/books/first-six')
             .then(res => res.json())
             .then(data => setBooks(data))
     }, [])
@@ -15,7 +15,7 @@ const Book = () => {
             <div className='grid lg:grid-cols-2 sm:grid-cols-1 gap-5 my-6 justify-center items-center mx-8'>
                 {
                     books.map(book => <BookCard
-                        key={book.id}
+                        key={book._id}
                         book={book}
                     ></BookCard>)
                 }

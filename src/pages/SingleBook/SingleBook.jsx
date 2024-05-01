@@ -19,7 +19,7 @@ const SingleBook = () => {
             .then(res => res.json())
             .then(data => {
                 console.log(data);
-                setNewQuantity(prevQuantity => prevQuantity - 1);
+                setNewQuantity(newQuantity - 1);
                 console.log("The value of newQuantity:", newQuantity);
             })
     }

@@ -1,12 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import RestockBook from './RestockBook/RestockBook';
+import { QuantityContext } from '../../providers/QuantityProvider';
 
 const SingleBook = () => {
     const loadedBook = useLoaderData();
     // console.log(loadedBook);
     const { _id, name, image, description, price, quantity, supplier, sold } = loadedBook;
-    const [newQuantity, setNewQuantity] = useState(quantity);
+    // const [newQuantity, setNewQuantity] = useState(quantity);
+
+    const { newQuantity, setNewQuantity } = useContext(QuantityContext);
+    console.log(newQuantity);
+
 
     const handleDelivered = async (_id) => {
 
@@ -30,6 +35,8 @@ const SingleBook = () => {
     useEffect(() => {
         console.log("Updated newQuantity:", newQuantity);
     }, [newQuantity]);
+
+
 
     return (
         <div className='flex justify-center items-center my-7 flex-col lg:flex-row-reverse'>

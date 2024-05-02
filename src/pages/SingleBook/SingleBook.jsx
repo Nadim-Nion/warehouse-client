@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
+import RestockBook from './RestockBook/RestockBook';
 
 const SingleBook = () => {
     const loadedBook = useLoaderData();
@@ -7,7 +8,7 @@ const SingleBook = () => {
     const { _id, name, image, description, price, quantity, supplier, sold } = loadedBook;
     const [newQuantity, setNewQuantity] = useState(quantity);
 
-    const handleDelivered = (_id) => {
+    const handleDelivered = async (_id) => {
 
         fetch(`http://localhost:5000/books/${_id}/delivered`, {
             method: "POST",
@@ -19,7 +20,8 @@ const SingleBook = () => {
             .then(res => res.json())
             .then(data => {
                 console.log(data);
-                setNewQuantity(newQuantity - 1);
+                setNewQuantity(data.quantity);
+                // setNewQuantity(newQuantity - 1);
                 console.log("The value of newQuantity:", newQuantity);
             })
     }
@@ -30,7 +32,8 @@ const SingleBook = () => {
     }, [newQuantity]);
 
     return (
-        <div className='flex justify-center items-center my-7'>
+        <div className='flex justify-center items-center my-7 flex-col lg:flex-row-reverse'>
+            <RestockBook></RestockBook>
             <div className="card card-compact w-96 bg-base-100 shadow-xl">
                 <figure><img src={image} alt="Shoes" /></figure>
                 <div className="card-body">
@@ -42,11 +45,12 @@ const SingleBook = () => {
                     <p className='text-lg font-semibold transition-colors duration-300 hover:text-emerald-700'>Quantity: {quantity}</p>
                     <p className='text-lg font-semibold transition-colors duration-300 hover:text-emerald-700'>Price: ${price}</p>
                     <div className="card-actions justify-end">
-                        <button onClick={() => handleDelivered(_id)} className="btn btn-primary">Delivered</button>
+                        <button onClick={() => handleDelivered(_id)} className="btn btn-info">Delivered</button>
                     </div>
                 </div>
             </div>
         </div>
+
     );
 };
 

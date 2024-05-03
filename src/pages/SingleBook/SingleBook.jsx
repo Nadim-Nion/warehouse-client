@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import RestockBook from './RestockBook/RestockBook';
 import { QuantityContext } from '../../providers/QuantityProvider';
 
@@ -51,7 +51,14 @@ const SingleBook = () => {
                     <p className='text-lg'>Sold: {sold}</p>
                     <p className='text-lg font-semibold transition-colors duration-300 hover:text-emerald-700'>Quantity: {quantity}</p>
                     <p className='text-lg font-semibold transition-colors duration-300 hover:text-emerald-700'>Price: ${price}</p>
-                    <div className="card-actions justify-end">
+                    <div className="card-actions justify-between">
+                        <div>
+                            <Link to="/manage-books">
+                                <button className="btn btn-active btn-link font-bold text-2xl">
+                                    Manage Books
+                                </button>
+                            </Link>
+                        </div>
                         <button onClick={() => handleDelivered(_id)} className="btn btn-info">Delivered</button>
                     </div>
                 </div>

@@ -7,6 +7,7 @@ import ErrorPage from "../components/ErrorPage/ErrorPage";
 import SingleBook from "../pages/SingleBook/SingleBook";
 import PrivateRoute from "./PrivateRoute";
 import QuantityProvider from "../providers/QuantityProvider";
+import ManageBooks from "../pages/ManageBooks/ManageBooks";
 
 const router = createBrowserRouter([
     {
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
                     </QuantityProvider>
                 </PrivateRoute>,
                 loader: ({ params }) => fetch(`http://localhost:5000/books/${params.id}`)
+            },
+            {
+                path: "/manage-books",
+                element: <ManageBooks></ManageBooks>
             }
         ]
     },

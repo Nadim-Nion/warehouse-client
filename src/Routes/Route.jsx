@@ -38,7 +38,8 @@ const router = createBrowserRouter([
             },
             {
                 path: "/manage-books",
-                element: <ManageBooks></ManageBooks>
+                element: <ManageBooks></ManageBooks>,
+                loader: () => fetch('http://localhost:5000/books/all')
             }
         ]
     },

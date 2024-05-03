@@ -10,8 +10,8 @@ const Header = () => {
         {
             user &&
             <>
-                <li><Link>Manage Items</Link></li>
-                <li><Link>Add Items</Link></li>
+                <li><Link to="/manage-books">Manage Items</Link></li>
+                <li><Link to="/AddItems">Add Items</Link></li>
                 <li><Link>My Items</Link></li>
             </>
         }

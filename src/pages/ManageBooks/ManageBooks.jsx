@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 const ManageBooks = () => {
@@ -68,6 +68,11 @@ const ManageBooks = () => {
                         }
                     </tbody>
                 </table>
+            </div>
+            <div className='text-center my-5'>
+                <Link to="/addItems">
+                    <button className="btn btn-info">Add New Book</button>
+                </Link>
             </div>
         </div>
     );

@@ -8,6 +8,7 @@ import SingleBook from "../pages/SingleBook/SingleBook";
 import PrivateRoute from "./PrivateRoute";
 import QuantityProvider from "../providers/QuantityProvider";
 import ManageBooks from "../pages/ManageBooks/ManageBooks";
+import AddItems from "../pages/AddItems/AddItems";
 
 const router = createBrowserRouter([
     {
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
                 path: "/manage-books",
                 element: <ManageBooks></ManageBooks>,
                 loader: () => fetch('http://localhost:5000/books/all')
+            },
+            {
+                path: "/addItems",
+                element: <PrivateRoute><AddItems></AddItems></PrivateRoute>
             }
         ]
     },

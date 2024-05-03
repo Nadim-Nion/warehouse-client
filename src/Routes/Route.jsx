@@ -34,7 +34,7 @@ const router = createBrowserRouter([
                         <SingleBook></SingleBook>
                     </QuantityProvider>
                 </PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/books/${params.id}`)
+                // loader: ({ params }) => fetch(`http://localhost:5000/books/${params.id}`)
             },
             {
                 path: "/manage-books",

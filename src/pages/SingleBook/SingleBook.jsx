@@ -1,16 +1,25 @@
-import React, { useContext, useEffect } from 'react';
-import { Link, useLoaderData } from 'react-router-dom';
+import React, { useContext, useEffect, useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
 import RestockBook from './RestockBook/RestockBook';
 import { QuantityContext } from '../../providers/QuantityProvider';
 
 const SingleBook = () => {
-    const loadedBook = useLoaderData();
-    // console.log(loadedBook);
-    const { _id, name, image, description, price, quantity, supplier, sold } = loadedBook;
+    // const loadedBook = useLoaderData();
+    // const { _id, name, image, description, price, quantity, supplier, sold } = loadedBook;
     // const [newQuantity, setNewQuantity] = useState(quantity);
 
     const { newQuantity, setNewQuantity } = useContext(QuantityContext);
-    console.log(newQuantity);
+    const [book, setBook] = useState({});
+    const { _id, name, image, description, price, quantity, supplier, sold } = book;
+    const params = useParams();
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/books/${params.id}`)
+            .then(res => res.json())
+            .then(data => {
+                setBook(data)
+            })
+    }, [params.id, newQuantity])
 
 
     const handleDelivered = async (_id) => {
@@ -40,7 +49,7 @@ const SingleBook = () => {
 
     return (
         <div className='flex justify-center items-center my-7 flex-col lg:flex-row-reverse'>
-            <RestockBook></RestockBook>
+            <RestockBook book={book}></RestockBook>
             <div className="card card-compact w-96 bg-base-100 shadow-xl">
                 <figure><img src={image} alt="Shoes" /></figure>
                 <div className="card-body">

@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
-import { useLoaderData } from 'react-router-dom';
 import { QuantityContext } from '../../../providers/QuantityProvider';
 
-const RestockBook = () => {
-    const loadedBook = useLoaderData();
-    const { _id } = loadedBook;
+const RestockBook = ({ book }) => {
+    /*  const loadedBook = useLoaderData();
+     const { _id } = loadedBook; */
+    const { _id } = book;
     const { newQuantity, setNewQuantity } = useContext(QuantityContext);
 
     const handleRestock = event => {

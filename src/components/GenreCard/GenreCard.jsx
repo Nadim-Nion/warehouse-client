@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const GenreCard = ({ genre }) => {
     const { bookName, authorName, category, image } = genre;
@@ -13,7 +14,9 @@ const GenreCard = ({ genre }) => {
                     <p>Author: {authorName}</p>
                     <p>Genre: {category}</p>
                     <div className="card-actions">
-                        <button className="btn btn-info">Explore</button>
+                        <Link to="/">
+                            <button className="btn btn-info">Explore</button>
+                        </Link>
                     </div>
                 </div>
             </div>

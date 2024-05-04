@@ -10,6 +10,7 @@ import QuantityProvider from "../providers/QuantityProvider";
 import ManageBooks from "../pages/ManageBooks/ManageBooks";
 import AddItems from "../pages/AddItems/AddItems";
 import MyItem from "../pages/MyItem/MyItem";
+import Blogs from "../pages/Blogs/Blogs";
 
 const router = createBrowserRouter([
     {
@@ -50,6 +51,10 @@ const router = createBrowserRouter([
             {
                 path: "/myItem",
                 element: <PrivateRoute><MyItem></MyItem></PrivateRoute>
+            },
+            {
+                path: "/blogs",
+                element: <Blogs></Blogs>
             }
         ]
     },

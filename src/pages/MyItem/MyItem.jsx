@@ -5,6 +5,8 @@ import Swal from 'sweetalert2';
 const MyItem = () => {
     const [myItems, setMyItems] = useState([]);
     const { user } = useContext(AuthContext);
+    const [updatedItems, setUpdatedItems] = useState([]);
+    console.log(updatedItems);
 
     useEffect(() => {
         fetch(`http://localhost:5000/newAddedBooks?email=${user?.email}`)
@@ -28,12 +30,26 @@ const MyItem = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                /* Swal.fire({
-                    title: "Deleted!",
-                    text: "Your book has been deleted.",
-                    icon: "success"
-                }); */
-                console.log('Deleted successfully');
+
+                fetch(`http://localhost:5000/newAddedBooks/${_id}`, {
+                    method: 'DELETE'
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                        if (data.deletedCount > 0) {
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "Your book has been deleted.",
+                                icon: "success"
+                            });
+
+                            // console.log('Deleted successfully');
+                            const remaining = myItems.filter(item => item._id !== _id);
+                            setUpdatedItems(remaining);
+                        }
+                    })
+
             }
         });
     }

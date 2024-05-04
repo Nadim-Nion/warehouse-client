@@ -4,8 +4,8 @@ import Swal from 'sweetalert2';
 
 const ManageBooks = () => {
     const loadedBooks = useLoaderData();
-
     const [books, setBooks] = useState(loadedBooks);
+    // console.log(books);
 
     const handleDelete = _id => {
         Swal.fire({
@@ -32,6 +32,7 @@ const ManageBooks = () => {
                                 icon: "success"
                             });
 
+                            // const remaining = books.filter(book => book._id !== _id)
                             const remaining = books.filter(book => book._id !== _id);
                             setBooks(remaining);
                         }

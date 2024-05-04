@@ -9,6 +9,7 @@ import PrivateRoute from "./PrivateRoute";
 import QuantityProvider from "../providers/QuantityProvider";
 import ManageBooks from "../pages/ManageBooks/ManageBooks";
 import AddItems from "../pages/AddItems/AddItems";
+import MyItem from "../pages/MyItem/MyItem";
 
 const router = createBrowserRouter([
     {
@@ -45,6 +46,10 @@ const router = createBrowserRouter([
             {
                 path: "/addItems",
                 element: <PrivateRoute><AddItems></AddItems></PrivateRoute>
+            },
+            {
+                path: "/myItem",
+                element: <PrivateRoute><MyItem></MyItem></PrivateRoute>
             }
         ]
     },

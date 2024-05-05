@@ -2,6 +2,7 @@ import React, { createContext, useEffect, useState } from 'react';
 import app from '../firebase/firebase.config';
 import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, sendEmailVerification, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth';
 import { GoogleAuthProvider } from "firebase/auth";
+import axios from 'axios';
 
 export const AuthContext = createContext(null);
 const auth = getAuth(app);
@@ -42,6 +43,15 @@ const AuthProvider = ({ children }) => {
             console.log('Current user inside the auth state observer', currentUser);
             setUser(currentUser);
             setLoading(false);
+
+            // if current user exists, issue a token
+            if (currentUser) {
+                const loggedUser = { email: currentUser.email };
+                axios.post('http://localhost:5000/jwt', loggedUser, { withCredentials: true })
+                    .then(res => {
+                        console.log('Token response', res.data);
+                    })
+            }
         })
 
         return () => {

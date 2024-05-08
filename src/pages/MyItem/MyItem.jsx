@@ -1,21 +1,31 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { AuthContext } from '../../providers/AuthProvider';
+import React, { useEffect, useState } from 'react';
+// import { AuthContext } from '../../providers/AuthProvider';
 import Swal from 'sweetalert2';
+import useAxiosSecure from '../../hooks/useAxiosSecure';
+import useAuthContext from '../../hooks/useAuthContext';
 
 const MyItem = () => {
     const [myItems, setMyItems] = useState([]);
-    const { user } = useContext(AuthContext);
+    // const { user } = useContext(AuthContext);
+    const { user } = useAuthContext();
     const [updatedItems, setUpdatedItems] = useState([]);
     console.log(updatedItems);
+    const axiosSecure = useAxiosSecure();
+
+    const url = `http://localhost:5000/newAddedBooks?email=${user?.email}`;
 
     useEffect(() => {
-        fetch(`http://localhost:5000/newAddedBooks?email=${user?.email}`, { credentials: 'include' })
+        /* fetch(url, { credentials: 'include' })
             .then(res => res.json())
             .then(data => {
                 // console.log(data);
                 setMyItems(data);
-            })
-    }, [user.email])
+            }) */
+
+        axiosSecure.get(url)
+            .then(res => setMyItems(res.data))
+
+    }, [url, user.email, axiosSecure]);
 
     const handleDelete = _id => {
         console.log(_id);

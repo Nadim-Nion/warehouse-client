@@ -1,11 +1,23 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 const ManageBooks = () => {
-    const loadedBooks = useLoaderData();
-    const [books, setBooks] = useState(loadedBooks);
-    // console.log(books);
+    const [books, setBooks] = useState([]);
+    const { total } = useLoaderData();
+    const bookPerPage = 10;
+    const numberOfPages = Math.ceil(total / bookPerPage);
+    console.log(numberOfPages);
+
+    const pages = [...Array(numberOfPages).keys()];
+
+    useEffect(() => {
+        fetch('http://localhost:5000/books/all')
+            .then(res => res.json())
+            .then(data => {
+                setBooks(data);
+            })
+    }, []);
 
     const handleDelete = _id => {
         Swal.fire({
@@ -56,7 +68,7 @@ const ManageBooks = () => {
                     </thead>
                     <tbody>
                         {
-                            loadedBooks.map(book => <tr key={book._id}>
+                            books?.map(book => <tr key={book._id}>
                                 <td className='text-xl'>{book.name}</td>
                                 <td className='text-xl'>{book.price}</td>
                                 <td className='text-xl'>{book.quantity}</td>
@@ -75,7 +87,15 @@ const ManageBooks = () => {
                     <button className="btn btn-info">Add New Book</button>
                 </Link>
             </div>
-        </div>
+            <div className='flex justify-center items-center'>
+                {
+                    pages.map(page => <div key={page} className="join mr-2">
+                        {/* <button className="join-item btn">{page}</button> */}
+                        <input className="join-item btn btn-square" type="radio" name="options" aria-label={page} checked />
+                    </div>)
+                }
+            </div>
+        </div >
     );
 };
 

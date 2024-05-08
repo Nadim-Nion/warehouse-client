@@ -1,9 +1,11 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { AuthContext } from '../../providers/AuthProvider';
+import useAuthContext from '../../hooks/useAuthContext';
+// import { AuthContext } from '../../providers/AuthProvider';
 
 const Header = () => {
-    const { user, logOut } = useContext(AuthContext);
+    // const { user, logOut } = useContext(AuthContext);
+    const { user, logOut } = useAuthContext();
 
     const navItems = <>
         <li><Link to="/">Home</Link></li>

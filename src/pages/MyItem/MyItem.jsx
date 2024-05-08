@@ -9,7 +9,7 @@ const MyItem = () => {
     console.log(updatedItems);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/newAddedBooks?email=${user?.email}`)
+        fetch(`http://localhost:5000/newAddedBooks?email=${user?.email}`, { credentials: 'include' })
             .then(res => res.json())
             .then(data => {
                 // console.log(data);

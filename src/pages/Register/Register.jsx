@@ -1,9 +1,11 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { AuthContext } from '../../providers/AuthProvider';
+import useAuthContext from '../../hooks/useAuthContext';
+// import { AuthContext } from '../../providers/AuthProvider';
 
 const Register = () => {
-    const { createUser, verifyEmail } = useContext(AuthContext);
+    // const { createUser, verifyEmail } = useContext(AuthContext);
+    const { createUser, verifyEmail } = useAuthContext();
     const [success, setSuccess] = useState('');
     const [error, setError] = useState('');
     const [toast, setToast] = useState(false);

@@ -9,7 +9,7 @@ const ManageBooks = () => {
     const { total } = useLoaderData();
     // const booksPerPage = 10;
     const numberOfPages = Math.ceil(total / booksPerPage);
-    console.log(numberOfPages);
+    // console.log(numberOfPages);
 
     const pages = [...Array(numberOfPages).keys()];
 
@@ -100,17 +100,18 @@ const ManageBooks = () => {
             <div className='flex justify-center items-center'>
                 {
                     pages.map(page => <div key={page} className="join mr-2">
-                        <button
+                        {/*  <button
                             onClick={() => setCurrentPage(page)}
                             className="join-item btn"
-                        >{page}</button>
-                        {/* <input
-                            onClick={() => setCurrentPage(page)}
+                        >{page}</button> */}
+                        <input
+                            onChange={() => setCurrentPage(page)}
                             className="join-item btn btn-square"
                             type="radio"
                             name="options"
                             aria-label={page}
-                            checked /> */}
+                            checked={currentPage === page}
+                        />
                     </div>)
                 }
                 <div className="dropdown dropdown-hover">

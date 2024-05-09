@@ -4,9 +4,11 @@ import Swal from 'sweetalert2';
 
 const ManageBooks = () => {
     const [books, setBooks] = useState([]);
+    const [booksPerPage, setBooksPerPage] = useState(10);
+    const [currentPage, setCurrentPage] = useState(0);
     const { total } = useLoaderData();
-    const bookPerPage = 10;
-    const numberOfPages = Math.ceil(total / bookPerPage);
+    // const booksPerPage = 10;
+    const numberOfPages = Math.ceil(total / booksPerPage);
     console.log(numberOfPages);
 
     const pages = [...Array(numberOfPages).keys()];
@@ -54,6 +56,13 @@ const ManageBooks = () => {
         });
     }
 
+    const handleBooksPerPage = event => {
+        // console.log(event.target.innerText);
+        const value = parseInt(event.target.innerText);
+        setBooksPerPage(value);
+        setCurrentPage(0);
+    }
+
     return (
         <div className='ml-5 my-5'>
             <div className="overflow-x-auto">
@@ -87,13 +96,30 @@ const ManageBooks = () => {
                     <button className="btn btn-info">Add New Book</button>
                 </Link>
             </div>
+            <p className='text-xl font-semibold text-center my-3'>Current Page: {currentPage}</p>
             <div className='flex justify-center items-center'>
                 {
                     pages.map(page => <div key={page} className="join mr-2">
-                        {/* <button className="join-item btn">{page}</button> */}
-                        <input className="join-item btn btn-square" type="radio" name="options" aria-label={page} checked />
+                        <button
+                            onClick={() => setCurrentPage(page)}
+                            className="join-item btn"
+                        >{page}</button>
+                        {/* <input
+                            onClick={() => setCurrentPage(page)}
+                            className="join-item btn btn-square"
+                            type="radio"
+                            name="options"
+                            aria-label={page}
+                            checked /> */}
                     </div>)
                 }
+                <div className="dropdown dropdown-hover">
+                    <div tabIndex={0} role="button" className="btn m-1">Books Per Page</div>
+                    <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+                        <li onClick={handleBooksPerPage}><a>5</a></li>
+                        <li onClick={handleBooksPerPage}><a>10</a></li>
+                    </ul>
+                </div>
             </div>
         </div >
     );

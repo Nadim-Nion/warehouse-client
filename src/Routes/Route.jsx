@@ -37,13 +37,13 @@ const router = createBrowserRouter([
                         <SingleBook></SingleBook>
                     </QuantityProvider>
                 </PrivateRoute>,
-                // loader: ({ params }) => fetch(`http://localhost:5000/books/${params.id}`)
+                // loader: ({ params }) => fetch(`https://warehouse-server-zeta.vercel.app/books/${params.id}`)
             },
             {
                 path: "/manage-books",
                 element: <ManageBooks></ManageBooks>,
-                // loader: () => fetch('http://localhost:5000/books/all')
-                loader: () => fetch('http://localhost:5000/booksCount')
+                // loader: () => fetch('https://warehouse-server-zeta.vercel.app/books/all')
+                loader: () => fetch('https://warehouse-server-zeta.vercel.app/booksCount')
             },
             {
                 path: "/addItems",

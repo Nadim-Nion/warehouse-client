@@ -17,7 +17,7 @@ const AddItems = () => {
         const newBook = { name, quantity, supplier, price, email, image };
         console.log(newBook);
 
-        fetch('http://localhost:5000/newAddedBooks', {
+        fetch('https://warehouse-server-zeta.vercel.app/newAddedBooks', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

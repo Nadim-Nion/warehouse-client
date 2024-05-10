@@ -14,7 +14,7 @@ const SingleBook = () => {
     const params = useParams();
 
     useEffect(() => {
-        fetch(`http://localhost:5000/books/${params.id}`)
+        fetch(`https://warehouse-server-zeta.vercel.app/books/${params.id}`)
             .then(res => res.json())
             .then(data => {
                 setBook(data)
@@ -24,7 +24,7 @@ const SingleBook = () => {
 
     const handleDelivered = async (_id) => {
 
-        fetch(`http://localhost:5000/books/${_id}/delivered`, {
+        fetch(`https://warehouse-server-zeta.vercel.app/books/${_id}/delivered`, {
             method: "POST",
             headers: {
                 "content-type": "application/json"

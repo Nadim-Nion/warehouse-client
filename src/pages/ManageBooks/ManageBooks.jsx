@@ -14,7 +14,7 @@ const ManageBooks = () => {
     const pages = [...Array(numberOfPages).keys()];
 
     useEffect(() => {
-        fetch(`http://localhost:5000/books/all?page=${currentPage}&size=${booksPerPage}`)
+        fetch(`https://warehouse-server-zeta.vercel.app/books/all?page=${currentPage}&size=${booksPerPage}`)
             .then(res => res.json())
             .then(data => {
                 setBooks(data);
@@ -32,7 +32,7 @@ const ManageBooks = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/books/${_id}`, {
+                fetch(`https://warehouse-server-zeta.vercel.app/books/${_id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())

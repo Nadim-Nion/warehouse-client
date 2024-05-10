@@ -17,7 +17,7 @@ const RestockBook = ({ book }) => {
             quantity: quantityToAdd,
         };
 
-        fetch(`http://localhost:5000/books/${_id}/restock`, {
+        fetch(`https://warehouse-server-zeta.vercel.app/books/${_id}/restock`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

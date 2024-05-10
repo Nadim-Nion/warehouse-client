@@ -12,7 +12,7 @@ const MyItem = () => {
     console.log(updatedItems);
     const axiosSecure = useAxiosSecure();
 
-    const url = `http://localhost:5000/newAddedBooks?email=${user?.email}`;
+    const url = `https://warehouse-server-zeta.vercel.app/newAddedBooks?email=${user?.email}`;
 
     useEffect(() => {
         /* fetch(url, { credentials: 'include' })
@@ -41,7 +41,7 @@ const MyItem = () => {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                fetch(`http://localhost:5000/newAddedBooks/${_id}`, {
+                fetch(`https://warehouse-server-zeta.vercel.app/newAddedBooks/${_id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())

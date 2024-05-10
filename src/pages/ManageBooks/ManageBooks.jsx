@@ -14,12 +14,12 @@ const ManageBooks = () => {
     const pages = [...Array(numberOfPages).keys()];
 
     useEffect(() => {
-        fetch('http://localhost:5000/books/all')
+        fetch(`http://localhost:5000/books/all?page=${currentPage}&size=${booksPerPage}`)
             .then(res => res.json())
             .then(data => {
                 setBooks(data);
             })
-    }, []);
+    }, [currentPage, booksPerPage]);
 
     const handleDelete = _id => {
         Swal.fire({
